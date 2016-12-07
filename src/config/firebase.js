@@ -13,16 +13,20 @@ firebase.initializeApp(config);
 var database = firebase.database();
 
 export const getOnce = () => {
-    firebase
+    return firebase
         .database()
-        .ref('/stream')
+        .ref('/stream_2')
+        .orderByChild('page')
         .once('value');
 }
 
 export const getOn = (callback) => {
+
     var count = 0;
     firebase
         .database()
-        .ref('/stream')
+        .ref('/stream_2')
+        .orderByChild('page')
+        .limitToLast(100)
         .on('child_added', callback);
 }
