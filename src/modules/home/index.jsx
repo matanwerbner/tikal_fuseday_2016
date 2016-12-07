@@ -1,7 +1,7 @@
 import React from 'react';
 import { inject, observer } from 'mobx-react';
 
-@inject('homeState')
+@inject('appState')
 @observer
 export default class HomePage extends React.Component {
     
@@ -10,9 +10,7 @@ export default class HomePage extends React.Component {
     }
 
     render (){
-        const length = this.props.homeState.data && this.props.homeState.data.length;
-        return <div>
-            { length }
-        </div>;
+        const length = this.props.appState.data && this.props.appState.data.length;
+        return <div>{ length }</div>;
     }
 } 
