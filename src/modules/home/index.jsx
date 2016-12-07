@@ -15,6 +15,8 @@ export default class HomePage extends React.Component {
 
     render (){
         const length = this.props.homeState.data && this.props.homeState.data.length;
-        return <div>{ length }</div>;
+        return <div>
+            { length }
+        </div>;
     }
 } 

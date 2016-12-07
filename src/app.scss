@@ -1,11 +1,19 @@
 .container {
     display: flex;
     flex-direction: column;
+    height: 100%;
 
     .header {
         height: 50px;
         display: flex;
         background-color: #39c;
         flex-direction: row;
+    }
+    .body {
+        flex: 1;
+    }
+
+    .footer {
+        height: 100px;
     }
 }

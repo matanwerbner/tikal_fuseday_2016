@@ -6,7 +6,10 @@ let db = null;
 
 function CreateObjectStore(dbName, storeName) {
         return new Promise((resolve, reject) => {
-
+                if(db) {
+                        resolve(db);
+                        return;
+                }
                 var request = indexedDB.open(dbName);
                 request.onsuccess = function (e) {
                         db = e.target.result;
