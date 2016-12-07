@@ -1,7 +1,7 @@
 import React from 'react';
 import { inject, observer } from 'mobx-react';
 
-@inject('homeState')
+@inject('appState')
 @observer
 export default class HomePage extends React.Component {
     

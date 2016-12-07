@@ -12,6 +12,9 @@ function CreateObjectStore(dbName, storeName) {
                         return;
                 }
                 var request = indexedDB.open(dbName);
+                request.onerror = function(event) {
+                        debugger;
+                }
                 request.onsuccess = function (e) {
                         db = e.target.result;
                         var version = parseInt(db.version);
