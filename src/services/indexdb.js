@@ -1,3 +1,4 @@
+import AppState from '../AppState';
 if (!window.indexedDB) {
         window.alert("Your browser doesn't support a stable version of IndexedDB.")
 }
@@ -39,6 +40,8 @@ export const add = (snapshot) => {
                         .add(snapshot);
 
                 request.onsuccess = function (event) {
+                        debugger;
+	                      AppState.addItem(snapshot);
                         console.log("added item");
                         //  console.log("Kenny has been added to your database.");
                 };

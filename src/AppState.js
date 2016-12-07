@@ -1,17 +1,20 @@
-import { observable } from 'mobx';
-import { getAll } from './services/indexdb';
-class AppState {
-  constructor() {
-  }
+import {observable, action} from 'mobx';
+import { readAll } from './services/indexdb';
 
-  news = {
-    data: [],
-    getNews: () => {
-      getAll().then((data) => {
-        this.data = data;
-      })
+class AppState {
+    constructor() {
+	    readAll().then((d) => {
+		    this.data = Object.keys(d).map((key) => d[key]);
+	    })
     }
-  }
+
+    @observable
+    data: [];
+
+    @action
+		addItem(item){
+	    data.push(item);
+    }
 }
 
 export default AppState;

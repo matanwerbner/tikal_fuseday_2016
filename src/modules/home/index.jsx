@@ -9,10 +9,6 @@ export default class HomePage extends React.Component {
         super(props);
     }
 
-    componentDidMount() {
-        this.props.homeState.getNews();
-    }
-
     render (){
         const length = this.props.homeState.data && this.props.homeState.data.length;
         return <div>
