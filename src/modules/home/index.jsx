@@ -10,8 +10,8 @@ export default class HomePage extends React.Component {
     }
 
     render (){
-        const length = this.props.homeState.data && this.props.homeState.data.length;
-        const { mostActiveWriter } = this.props.homeState;
+        const length = this.props.appState.data && this.props.appState.data.length;
+        const { mostActiveWriter } = this.props.appState;
         return <div>
             <div>
                 We have { length } articles

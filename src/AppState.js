@@ -1,10 +1,9 @@
 import {observable, computed, action} from 'mobx';
 import { readAll } from './services/indexdb';
-import  { groupBy, sortBy, reverse} from 'lodash';
+import  { groupBy, sortBy, reverse, take, find} from 'lodash';
 class AppState {
     constructor() {
 	    readAll().then((d) => {
-            debugger;
 		    this.data = Object.keys(d).map((key) => d[key]);
 	    })
     }
@@ -21,6 +20,15 @@ class AppState {
             return reversed[0].author;
         }
         return '';
+    }
+
+    getArticleByUuid(uuid) {
+        return find(this.data, {uuid})
+    }
+
+    @computed 
+    get topData() {
+        return take(this.data, 300);
     }
     
     @action
