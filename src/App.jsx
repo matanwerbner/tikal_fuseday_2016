@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import DevTools from 'mobx-react-devtools';
+import {inject, observer} from 'mobx-react';
 import AppStyle from './styles/app.style.js';
 import './styles/app.scss';
 import {BottomNavigation, BottomNavigationItem} from 'material-ui/BottomNavigation';
@@ -9,8 +10,10 @@ import IconNews from 'material-ui/svg-icons/action/language';
 import IconHome from 'material-ui/svg-icons/navigation/apps';
 import IconFilter from 'material-ui/svg-icons/image/crop-free';
 const Router = require('react-router');
+import AjaxLoader from './modules/shared/ajaxLoader';
 
-
+@inject('appState')
+@observer
 class App extends Component {
   
   constructor(props) {
@@ -41,7 +44,12 @@ class App extends Component {
          <h3>News Reader - Matan & Ofer</h3>
         </Paper>
         <div style={AppStyle.body}>
-        {this.props.children}
+        {
+          this.props.appState.isLoading
+          ? <AjaxLoader />
+          : this.props.children
+        }
+        {}
         </div>
          <BottomNavigation style={AppStyle.footer} selectedIndex={this.getSelectedIndex(currentLocation)}>
           <BottomNavigationItem

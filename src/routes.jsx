@@ -37,3 +37,5 @@ export default (
     </Provider>
     </MuiThemeProvider>
 )
+
+export const ActiveAppState = appState;

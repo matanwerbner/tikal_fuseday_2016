@@ -13,7 +13,9 @@ export default {
     body: {
         padding: 10,
         flex: 1,
-        overflow: 'auto'
+        overflow: 'auto',
+        display: 'flex',
+        justifyContent: 'center'
     },
     footer: {
         height: '70px',

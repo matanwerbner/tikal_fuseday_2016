@@ -30,6 +30,11 @@ class AppState {
     get topData() {
         return take(this.data, 300);
     }
+
+    @computed
+    get isLoading() {
+        return !this.data;
+    }
     
     @action
 		addItem(item){
