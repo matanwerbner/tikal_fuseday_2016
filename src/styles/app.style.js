@@ -5,7 +5,7 @@ export default {
         height: '100%'
     },
     header: {
-        paddingHorizontal: 10,
+        paddingLeft: 10,
         backgroundColor: '#80CBC4',
         height: '50px',
         color: "#fff"
