@@ -2,21 +2,31 @@ if (!window.indexedDB) {
         window.alert("Your browser doesn't support a stable version of IndexedDB.")
 }
 
-var db;
-var request = window
-        .indexedDB
-        .open("articlesDb", 1);
 
-request.onerror = function (event) {
-        console.log("error: ");
-};
+CreateObjectStore("articles","articles");
 
-request.onsuccess = function (event) {
-        db = request.result;
-        console.log("success: " + db);
-};
+let db = null;
 
-request.onupgradeneeded = function (event) {}
+function CreateObjectStore(dbName, storeName) {
+    var request = indexedDB.open(dbName);
+    request.onsuccess = function (e){
+            debugger;
+        db = e.target.result;
+        var version =  parseInt(db.version);
+        db.close();
+        var secondRequest = indexedDB.open(dbName, version+1);
+        secondRequest.onupgradeneeded = function (e) {
+            db = e.target.result;
+            try{
+                db.createObjectStore(storeName, {
+                        keyPath: 'uuid'
+                });
+            }catch(e) {
+
+            }
+        };
+    }
+}
 
 export const add = (snapshot) => {
         var request = db.transaction(["articles"], "readwrite")
@@ -24,11 +34,11 @@ export const add = (snapshot) => {
                 .add(snapshot);
 
         request.onsuccess = function (event) {
-                alert("Kenny has been added to your database.");
+              //  console.log("Kenny has been added to your database.");
         };
 
         request.onerror = function (event) {
-                alert("Unable to add data\r\nKenny is aready exist in your database! ");
+               // alert("Unable to add data\r\nKenny is aready exist in your database! ");
         }
 }
 
