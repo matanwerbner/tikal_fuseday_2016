@@ -15,7 +15,10 @@ module.exports = {
     publicPath: '/static/'
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.DefinePlugin({
+        'TIKAL_FUSEDAY_2016_API_KEY': JSON.stringify(process.env.TIKAL_FUSEDAY_2016_API_KEY || 'development')
+    }),
   ],
   resolve: {
     extensions: ['', '.js', '.jsx']
