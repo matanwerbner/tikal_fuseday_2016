@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import DevTools from 'mobx-react-devtools';
-import './app.scss';
-import FontIcon from 'material-ui/FontIcon';
+import AppStyle from './styles/app.style.js';
+import './styles/app.scss';
 import {BottomNavigation, BottomNavigationItem} from 'material-ui/BottomNavigation';
-import Paper from 'material-ui/Paper';
 
+import Paper from 'material-ui/Paper';
 import IconNews from 'material-ui/svg-icons/action/language';
 import IconHome from 'material-ui/svg-icons/navigation/apps';
 import IconFilter from 'material-ui/svg-icons/image/crop-free';
@@ -36,15 +36,14 @@ class App extends Component {
     
     var currentLocation = this.props.location.pathname
     return (
-      <div className="container">
-        <div className="header">
-          <h1>Hello</h1>
-        </div>
-        <div className="body">
+      <div className="container" style={AppStyle.container}>
+        <Paper style={AppStyle.header} >
+         <h3>News Reader - Matan & Ofer</h3>
+        </Paper>
+        <div style={AppStyle.body}>
         {this.props.children}
         </div>
-        <div className="footer">
-         <BottomNavigation selectedIndex={this.getSelectedIndex(currentLocation)}>
+         <BottomNavigation style={AppStyle.footer} selectedIndex={this.getSelectedIndex(currentLocation)}>
           <BottomNavigationItem
             label="Home"
             icon={<IconHome />}
@@ -61,7 +60,6 @@ class App extends Component {
             onClick={() => this.navigationItemSelected('filter')}
           />
         </BottomNavigation>
-        </div>
       </div>
 
     );
