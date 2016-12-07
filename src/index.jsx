@@ -8,7 +8,7 @@ render(
 );
 
 if (module.hot) {
-  module.hot.accept('./app', () => {
+  module.hot.accept('./App', () => {
     render(
       Routes,
       document.getElementById('root')
